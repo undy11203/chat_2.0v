@@ -1,0 +1,14 @@
+.divAuth {
+    height: 90vh;
+    position: relative;
+}
+
+.formAuth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+}

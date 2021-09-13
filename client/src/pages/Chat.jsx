@@ -1,18 +1,37 @@
 import { observer } from 'mobx-react-lite'
-import React, { useContext } from 'react'
-import { Context } from '..'
+import React, { useContext, useEffect, useState } from 'react'
+import { Context, SocketContext } from '..'
+import FormForMsg from '../components/UI/Form/FormForMsg'
+import NavbarChat from '../components/UI/Navbar/NavbarChat'
+import { groupRoutes } from '../routers'
 
 const Chat = () => {
     const {store} = useContext(Context)
+    const Socket = useContext(SocketContext)
+    const [useGroup, setUseGroup] = useState(null)
+    
+    
+    useEffect(()=>{
+        Socket.joinMsg()
+        Socket.getMsg()
+    }, [])
+    
 
+    
     
 
     return (
         <div>
-            <div className='Navbar'>
-                <div className='create'><button>Create new</button></div>
+           <NavbarChat useGroup={useGroup} setUseGroup={setUseGroup} />
+            <div className="Chat">
+                <ul className='chatList'>
+                    {/* Тут будут сообщения */}
+                </ul>
             </div>
-            <button onClick={()=> store.logout(localStorage.getItem('username'))}>Выйти</button>
+            <div>
+                <FormForMsg useGroup={useGroup}/>
+            </div>
+            <button style={{"position":"absolute", "right":5}} onClick={()=> store.logout(localStorage.getItem('username'))}>Выйти</button>
         </div>
     )
 }

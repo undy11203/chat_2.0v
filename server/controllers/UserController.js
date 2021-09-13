@@ -9,12 +9,12 @@ class UserController {
             const { username } = req.body
             const user = new User(username, uuid.v4())
             const data = UserService.auth(user)
-            //console.log(usersSet)
-            // if(data){
-            //     return res.json({status:200, username: username})
-            // }else{
-            //     return res.json({status: 404})
-            // }
+            console.log(usersSet)
+            if(data){
+                return res.json({status:200, username: username})
+            }else{
+                return res.json({status: 404})
+            }
             
         } catch (e) {
             console.log('Error in controller: ' + e)
@@ -28,6 +28,7 @@ class UserController {
                     usersSet.delete(user)
                 }
             }
+            console.log(usersSet)
             return res.json()
         } catch (e) {
             console.log('Error in controller: ' + e)

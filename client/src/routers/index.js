@@ -8,3 +8,8 @@ export const publicRoutes = [
 export const privateRoutes = [
     {path: '/chat', component: Chat, exact: true}
 ]
+
+export let groupRoutes = [
+    {name:"Home"},
+    {name:"Game"}
+]

@@ -20,18 +20,18 @@ export default class Store {
 
     async auth(username) {
         const response = await AuthService.auth(username)
-        console.log(response)
+        // console.log(response)
         if(response.data.status == 200){
             this.setUser(response.data.username)
             this.setAuth(true)
             localStorage.setItem('username', this.user)
-            console.log(localStorage.getItem('isAuth'))
+            // console.log(localStorage.getItem('isAuth'))
         }
     }
     async checkAuth() {
         if(localStorage.getItem('username')){
             const response = await AuthService.checkAuth(localStorage.getItem('username'))
-            console.log(response)
+            // console.log(response)
             if(response.data.status == 200){
                 this.setAuth(true)
                 this.setUser(localStorage.getItem('username'))

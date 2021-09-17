@@ -1,4 +1,4 @@
-import printMsg from "../components/printMsg/printMsg"
+import printMsg from "../components/print/printMsg"
 
 class Socket{
     constructor(socket){
@@ -6,7 +6,6 @@ class Socket{
     }
 
     joinGroup(group, user){
-        console.log(1)
         this.socket.emit('joinGroup', [group, user])
         
     }
@@ -24,6 +23,16 @@ class Socket{
     getMsg(){
         this.socket.on('getMsg', ([user, msg])=>{
             printMsg([user, msg])
+        })
+    }
+    getUser(){
+        this.socket.on('getUser', (user)=>{
+            let list_messages = document.querySelector('.userInRoomList')
+            for(let i in user){
+                let item = document.createElement('li');
+                item.textContent = `${i}`;
+                list_messages.appendChild(item);
+            }    
         })
     }
     test(){

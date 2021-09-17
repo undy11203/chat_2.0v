@@ -1,0 +1,11 @@
+.divAuth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 460px;
+}
+@media screen and (max-width: 518px) {
+    .divAuth{
+        padding: 0 20px;
+    }
+}

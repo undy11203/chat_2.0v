@@ -8,7 +8,7 @@ const AppRouter = () => {
     const {store} = useContext(Context)
     useEffect(()=>{
         store.checkAuth()
-        console.log(store.user)
+        // console.log(store.user)
     }, [])
 
     return (

@@ -1,0 +1,40 @@
+.Chat{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: inherit;
+    margin: 0 10px;
+    width: auto;
+}
+.NavbarChat{
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+.Chat>.ChatPole{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+.chatList{
+    font-family: monospace;
+    font-size: 27px;
+    font-weight: 700;
+    color: gold;
+    list-style-type: none;
+    padding: 0;
+    height: 400px;
+    overflow-y: auto;
+}
+.formForMsg form{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:545px) {
+    .Chat{
+        flex-direction: column;
+        width: 545px;
+        margin: 0;
+    }
+}

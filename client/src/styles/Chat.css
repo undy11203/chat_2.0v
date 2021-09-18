@@ -31,10 +31,19 @@
     display: flex;
     flex-direction: column;
 }
+.double-border-button.red{
+    bottom: 20px;
+    right: 20px;
+}
 @media screen and (max-width:545px) {
     .Chat{
         flex-direction: column;
         width: 545px;
         margin: 0;
+    }
+    .double-border-button.red{
+        bottom: auto;
+        top: -16px;
+        right: 5px;
     }
 }

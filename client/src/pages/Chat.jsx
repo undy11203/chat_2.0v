@@ -5,6 +5,7 @@ import DoubleBButton from '../components/UI/Buttons/DoubleBButton'
 import RedDoubleButton from '../components/UI/Buttons/RedDoubleButton'
 import FormForMsg from '../components/UI/Form/FormForMsg'
 import NavbarChat from '../components/UI/Navbar/NavbarChat'
+import UsersList from '../components/UsersList'
 import { groupRoutes } from '../routers'
 import '../styles/Chat.css'
 
@@ -17,8 +18,10 @@ const Chat = () => {
     useEffect(()=>{
         Socket.joinMsg()
         Socket.getMsg()
-        Socket.getUser()
     }, [])  
+    useEffect(()=>{
+        Socket.getUser(useGroup)
+    }, [useGroup])
     useEffect(()=>{
         refScroll.current.scrollIntoView(false)
         console.log(refScroll)
@@ -36,13 +39,8 @@ const Chat = () => {
                 </div>
             </div>
             
-            <div>
-                <div style={{'color':'gold'}}>User in {useGroup}</div>
-                <ul className='userInRoomList'>
-
-                </ul>
-            </div>
-            <RedDoubleButton style={{"position":"absolute", "right":5, "top": -16}} onClick={()=> store.logout(localStorage.getItem('username'))}>Выйти</RedDoubleButton>
+            <UsersList useGroup={useGroup}/>
+            <RedDoubleButton style={{"position":"absolute"}} onClick={()=> store.logout(localStorage.getItem('username'))}>Выйти</RedDoubleButton>
         </div>
     )
 }

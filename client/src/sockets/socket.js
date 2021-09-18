@@ -7,7 +7,7 @@ class Socket{
 
     joinGroup(group, user){
         this.socket.emit('joinGroup', [group, user])
-        
+        this.group = group
     }
     joinMsg(){
         this.socket.on('joinMsg', (data)=>{
@@ -25,14 +25,22 @@ class Socket{
             printMsg([user, msg])
         })
     }
-    getUser(){
+    getUser(group){
+        this.socket.emit('user', group)
         this.socket.on('getUser', (user)=>{
+            console.log(user)
             let list_messages = document.querySelector('.userInRoomList')
-            for(let i in user){
+            list_messages.innerHTML = ''
+            for(let i =0; i < user.length;i++){
                 let item = document.createElement('li');
-                item.textContent = `${i}`;
+                if(i != user.length-1){
+                    item.textContent = `${user[i]}, `;
+                }else{
+                    item.textContent = `${user[i]}`;
+                }
                 list_messages.appendChild(item);
             }    
+            console.log(list_messages)
         })
     }
     test(){

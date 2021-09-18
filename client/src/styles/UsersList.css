@@ -1,0 +1,17 @@
+.users{
+    width: 184px;
+    font-family: monospace;
+    font-weight: 700;
+    z-index: 100;
+    padding: 20px 0;
+}
+.users>div{
+    font-size: 20px;
+}
+.users>ul{
+    list-style-type: none;
+    font-size: 18px;
+}
+.users>ul li{
+    display: inline;
+}
